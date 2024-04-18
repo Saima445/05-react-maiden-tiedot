@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import "./App.css";
+import Filter from "./components/Filter";
+import Countries from "./components/Countries";
+// import Country from "./components/Country";
+import countryService from "./services/countries";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [countries, setCountries] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
+
+  useEffect(() => {
+    console.log("effect");
+    countryService.getAll().then((initialCountries) => {
+      console.log("promise fulfilled");
+      setCountries(initialCountries);
+    });
+  }, []);
+
+  const handleFilterChange = (event) => {
+    setSearchValue(event.target.value);
+  };
+
+  const filteredCountries = countries.filter((country) => {
+    return country.name.toLowerCase().includes(searchValue.toLowerCase());
+  });
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Countries informations</h1>
+      <Filter value={searchValue} onChange={handleFilterChange} />
+      <h2>List of countries</h2>
+      <Countries countries={filteredCountries} />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
