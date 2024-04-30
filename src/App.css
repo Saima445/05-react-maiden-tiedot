@@ -1,0 +1,42 @@
+body {
+  padding: 1rem;
+  background: linear-gradient(to bottom, #eaf4fb 0%, #c5e1fc 50%, #91cff7 100%);
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.1rem;
+  font-size: 1.1rem;
+}
+
+header {
+  height: 10rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.2rem;
+}
+main {
+  min-height: 40rem;
+  max-height: fit-content;
+}
+
+figure {
+  width: 25rem;
+  height: fit-content;
+}
+
+figure img {
+  max-width: 100%;
+  border: 1px solid black;
+}
+
+label {
+  font-size: 1.6rem;
+}
+input {
+  margin-inline-start: 1rem;
+  font-family: monospace;
+  height: 1.5rem;
+}
+/* .weatherIcon {
+  width: 5rem;
+} */
