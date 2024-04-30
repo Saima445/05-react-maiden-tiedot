@@ -6,7 +6,7 @@ const CountryInfo = ({ country }) => {
   const [weatherData, setWeatherData] = useState(null);
   // Suoritetaan aina, kun 'country.capital' muuttuu
   useEffect(() => {
-    // Funktio, joka hakee säätiedot maan pääkaupungista
+    // Haetaan säätiedot maan pääkaupungista
     const fetchWeatherData = async () => {
       try {
         const data = await countryService.getWeatherByCapital(country.capital);
@@ -18,21 +18,21 @@ const CountryInfo = ({ country }) => {
     };
     // Suoritetaan funktio 'fetchWeatherData'
     fetchWeatherData();
-  }, [country.capital]); //suoritus määritetään 'country.capital' -muutoksen perusteella
+  }, [country.capital]); // Suoritetaan 'country.capital' -muutoksen perusteella
 
   const languages = Object.values(country.languages);
   const temperature = weatherData
     ? `${Math.floor(weatherData.main.temp)}°C`
     : "";
   const wind = weatherData ? `${weatherData.wind.speed} m/s` : "";
-  // Palauttaa sääikoniin URL: n
-  const getWeatherIcon = (weatherCode) => {
+  // Palauttaa sääikoniin URL:n
+  const getWeatherIcon = (weatherIcon) => {
     const iconBaseUrl = "https://openweathermap.org/img/wn/";
-    return `${iconBaseUrl}${weatherCode}.png`;
+    return `${iconBaseUrl}${weatherIcon}.png`;
   };
 
   return (
-    <section>
+    <section className="countryInfo">
       <h2>{country.name}</h2>
       <p>Capital: {country.capital}</p>
       <p>Area: {country.area} square kilometres</p>
@@ -50,11 +50,14 @@ const CountryInfo = ({ country }) => {
           <h3>Weather in {country.capital}</h3>
           <p>Temperature: {temperature}</p>
           <p>Wind: {wind}</p>
+          {/* sisäinen lohko renderöidään vain, jos weatherData-muuttuja on !==0 */}
           {weatherData.weather && (
-            <img
-              src={getWeatherIcon(weatherData.weather[0].icon)}
-              alt={weatherData.weather[0].description}
-            />
+            <figure className="icon">
+              <img
+                src={getWeatherIcon(weatherData.weather[0].icon)}
+                alt={weatherData.weather[0].description}
+              />
+            </figure>
           )}
         </div>
       )}

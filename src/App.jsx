@@ -53,7 +53,7 @@ const App = () => {
   return (
     <>
       <header>
-        <h1>Countries informations</h1>
+        <h1>Countries Information</h1>
       </header>
       <main>
         <Filter value={searchValue} onChange={handleFilterChange} />

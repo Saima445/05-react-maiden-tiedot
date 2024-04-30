@@ -6,14 +6,15 @@ const getAll = () => {
   return request.then((response) => {
     // Käsitellään maatiedot täällä
     const countries = response.data.map((country) => {
-      // Tarkista, onko maan nimi saatavilla useilla kielillä
+      // Tarkista, onko maan nimi saatavilla eri nimikkeillä, jos ei löydy jätetään tyhjä merkkijono
       const name = country.name.common || country.name.official || "";
       // Haetaan maan pääkaupunki
-      const capital = country.capital;
+      const capital = country.capital || "";
       // Haetaan lipun URL-osoite
       const flagUrl = country.flags ? country.flags.svg || "" : "";
-      // Haetaan maassa puhutut kielet
+      // Taulukko maassa puhutuista kielistä.
       const languages = Object.values(country.languages || {});
+      // Kaikki country-objektin ominaisuudet ja arvot kopioituu uuteen objektiin
       return { ...country, name, capital, flagUrl, languages };
     });
     return countries;
