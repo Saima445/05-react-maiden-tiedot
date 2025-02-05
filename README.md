@@ -1,36 +1,36 @@
 # Countries Information App
 
-Tässä koulutyössä käytetään **Reactia** näyttämään tietoja eri maista ja antamaan niiden pääkaupunkien säätiedot. Käytössä on REST-API, jonka avulla haetaan tiedot kaikista maista sekä OpenWeatherMapin API, jolla haetaan säätiedot valitun maan pääkaupungista.
+This school project uses React to display information about different countries and provide weather details for their capitals. It utilizes a REST API to fetch data about all countries and the OpenWeatherMap API to retrieve weather information for the selected country’s capital.
 
-## Sovelluks livenä:
+## Live Demo:
 
 [Countries Information Demo](https://saima445.github.io/05-react-maiden-tiedot/)
 
-## Yleiskuvaus
+## Overview
 
-Sovellus tarjoaa seuraavat ominaisuudet:
-- Mahdollisuus etsiä maita nimellä.
-- Näyttää listan maista, jotka vastaavat hakukriteereitä.
-- Klikkaamalla "Show"-nappia käyttäjä voi tarkastella tarkempia tietoja valitusta maasta.
-- Näyttää maan pääkaupungin säätiedot (lämpötila, tuulen nopeus ja sääikoni).
+The application offers the following features:
+- Search for countries by name.
+- Display a list of countries matching the search criteria.
+- Clicking the “Show” button allows users to view detailed information about a selected country.
+- Displays the weather details of the country’s capital (temperature, wind speed, and a weather icon).
 
-### Ominaisuudet
+### Features
 
-- **Haku ja suodatus**: Voit hakea maita syöttämällä maan nimen hakukenttään. Jos tuloksia on alle 10, ne näytetään listana. Jos tuloksia on vain yksi, näytetään valitun maan tarkemmat tiedot ja säätiedot.
-- **Maan tiedot**: Valitun maan tiedot, kuten nimi, pääkaupunki, pinta-ala, kielet ja lippu.
-- **Säätiedot**: Maan pääkaupungin lämpötila, tuulen nopeus ja säätiedot haetaan OpenWeatherMap API:n kautta.
+- Search and Filter: You can search for countries by entering a name in the search field. If there are fewer than 10 results, they will be displayed as a list. If there is only one match, detailed information and weather data for the selected country will be shown.
+- Country Information: Displays details about the selected country, such as name, capital, area, languages, and flag.
+- Weather Information: Retrieves temperature, wind speed, and weather details for the country’s capital using the OpenWeatherMap API.
 
-## Käytetyt teknologiat
+## Technologies Used
 
-- **React**: Käyttöliittymän rakentamiseen ja tilanhallintaan.
-- **Axios**: HTTP-pyyntöjen lähettämiseen RestCountries- ja OpenWeatherMap API:ihin.
-- **CSS**: Ulkoasun ja responsiivisuuden hallintaan.
+- React: For building the user interface and managing state.
+- Axios: For making HTTP requests to the RestCountries and OpenWeatherMap APIs.
+- CSS: For styling and responsiveness.
 
-## Komponentit
+## Components
 
-1. **App**: Sovelluksen pääkomponentti, joka sisältää hakulogiikan ja hallinnoi tilaa.
-2. **Filter**: Hakukenttä, joka suodattaa maat hakutulosten perusteella.
-3. **Countries**: Näyttää listan maista, jotka vastaavat hakuehtoja.
-4. **CountryInfo**: Näyttää valitun maan tiedot, kuten pääkaupunki, kielet ja säätiedot.
-5. **Country**: Yksittäisen maan tiedot listassa.
-6. **countryService**: Palvelu, joka vastaa maiden ja säätietojen hakemisesta API:sta.
+	1.	App: The main application component that handles search logic and state management.
+	2.	Filter: A search field that filters countries based on the search results.
+	3.	Countries: Displays a list of countries matching the search criteria.
+	4.	CountryInfo: Shows detailed information about a selected country, including the capital, languages, and weather details.
+	5.	Country: Represents an individual country in the list.
+	6.	countryService: A service responsible for fetching country and weather data from the API.
